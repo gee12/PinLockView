@@ -1,5 +1,6 @@
 package com.andrognito.pinlockview;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -429,5 +430,14 @@ public class PinLockView extends RecyclerView {
      */
     public void attachIndicatorDots(IndicatorDots mIndicatorDots) {
         this.mIndicatorDots = mIndicatorDots;
+    }
+
+    /**
+     * Start shake animation.
+     */
+    public void shake() {
+        ObjectAnimator objectAnimator = new ObjectAnimator().ofFloat(this, "translationX",
+                0, 25, -25, 25, -25, 15, -15, 6, -6, 0).setDuration(1000);
+        objectAnimator.start();
     }
 }
